@@ -5,6 +5,7 @@ type ChannelOptions = {
   emptyOnly?: boolean;
   startsWith?: string;
   contains?: string;
+  members?: number;
 };
 
 export const parseChannel = (channel: Channel) => {
@@ -18,6 +19,7 @@ export const parseChannel = (channel: Channel) => {
     num_members: numMembers,
   } = channel;
 
+  // TODO: Fix undefineds
   return {
     id,
     name,
@@ -31,7 +33,7 @@ export const parseChannel = (channel: Channel) => {
 
 export const parseChannels = (
   channels: Channel[],
-  { emptyOnly, startsWith, contains }: ChannelOptions = {}
+  { emptyOnly, startsWith, contains, members }: ChannelOptions = {}
 ): Record<string, any>[] => {
   let parsedChannels = channels.map(parseChannel);
 
@@ -40,7 +42,6 @@ export const parseChannels = (
       ({ numMembers }) => numMembers === 0
     );
   }
-  console.log('startsWith', startsWith);
 
   if (startsWith) {
     parsedChannels = parsedChannels.filter(({ name }) =>
@@ -51,6 +52,12 @@ export const parseChannels = (
   if (contains) {
     parsedChannels = parsedChannels.filter(({ name }) =>
       name?.toLowerCase()?.includes(contains?.toLowerCase())
+    );
+  }
+
+  if (members) {
+    parsedChannels = parsedChannels.filter(
+      ({ numMembers }) => numMembers === +members
     );
   }
 

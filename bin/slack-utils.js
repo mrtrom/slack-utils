@@ -33,8 +33,13 @@ program
     '--contains <string>',
     'Only show channels that contains the given string'
   )
+  .option(
+    '--members <members>',
+    'Only show channels with the given number members'
+  )
   .option('--empty-only', 'Only show empty channels')
-  .option('--achive', 'Archive selected channels')
+  .option('--archive', 'Archive selected channels')
+  .option('--dry-run', `Don't perform any action, only show what would be done`)
   .description('Works with the channels API')
   .action(commandOptions => {
     channels({ ...commandOptions, ...program.opts() });
@@ -64,10 +69,10 @@ process.on('uncaughtException', err => {
      *    https://github.com/mrtrom/slack-utils/issues/new?title=${title}
      *
      * * *
-     * platform:', process.platform
-     * node version:', process.version
-     * slack-utils version:', getVersion()
-     * argv: %j', process.argv
+     * platform:', ${process.platform}
+     * node version:', ${process.version}
+     * slack-utils version:', ${getVersion()}
+     * argv: %j', ${process.argv}
      * stack:
       ${_indent(err.stack)}
   `);
