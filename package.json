@@ -1,11 +1,11 @@
 {
-  "name": "slack-utils",
+  "name": "slacktool",
   "version": "0.1.0",
   "description": "Slack utils",
   "bin": {
-    "slack-utils": "bin/slack-utils"
+    "slacktool": "bin/slacktool"
   },
-  "main": "bin/slack-utils",
+  "main": "bin/slacktool",
   "scripts": {
     "test": "jest test",
     "prepare": "npm run build",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrtrom/slack-utils.git"
+    "url": "git+https://github.com/mrtrom/slacktool.git"
   },
   "keywords": [
     "slack",
@@ -24,9 +24,9 @@
   "author": "Alexander Ochoa",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/mrtrom/slack-utils/issues"
+    "url": "https://github.com/mrtrom/slacktool/issues"
   },
-  "homepage": "https://github.com/mrtrom/slack-utils#readme",
+  "homepage": "https://github.com/mrtrom/slacktool#readme",
   "dependencies": {
     "@slack/web-api": "^6.7.2",
     "bun-types": "^0.1.4",

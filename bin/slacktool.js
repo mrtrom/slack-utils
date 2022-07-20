@@ -9,15 +9,15 @@ const getVersion = () => {
 
 // main program
 program
-  .name('slack-utils')
+  .name('slacktool')
   .version(getVersion())
   .requiredOption('-a, --token <token>,', 'Slack API token')
   .addHelpText(
     'after',
     `
 
-See <https://github.com/mrtrom/slack-utils> for more complete docs
-Please report bugs to <https://github.com/mrtrom/slack-utils/issues>`
+See <https://github.com/mrtrom/slacktool> for more complete docs
+Please report bugs to <https://github.com/mrtrom/slacktool/issues>`
   );
 
 // channels command
@@ -58,20 +58,20 @@ process.on('uncaughtException', err => {
   }
 
   const title = encodeURIComponent(
-    `slack-utils ${getVersion()} crashed: ${err.toString()}`
+    `slacktool ${getVersion()} crashed: ${err.toString()}`
   );
 
   console.error(`
-     * slack-utils crashed!
+     * slacktool crashed!
      *
      * Please report this issue and include the details below:
      *
-     *    https://github.com/mrtrom/slack-utils/issues/new?title=${title}
+     *    https://github.com/mrtrom/slacktool/issues/new?title=${title}
      *
      * * *
      * platform:', ${process.platform}
      * node version:', ${process.version}
-     * slack-utils version:', ${getVersion()}
+     * slacktool version:', ${getVersion()}
      * argv: %j', ${process.argv}
      * stack:
       ${_indent(err.stack)}

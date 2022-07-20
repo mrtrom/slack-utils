@@ -5,7 +5,7 @@ This is a set of tool that helps working with Slack in bulk such as: listing cha
 ## Installation
 
 ```
-$ npm install -g slack-utils
+$ npm install -g slacktool
 ```
 
 ## Configuration
@@ -18,7 +18,7 @@ To get started, you can generate an APP token here: https://api.slack.com/tutori
 ### Slack App manifest example
 ```
 display_information:
-  name: slack-utils
+  name: slacktool
   description: An app for slack utils
   background_color: "#d982b5"
 features:
@@ -109,11 +109,11 @@ settings:
 
 ### Getting help :smiley:
 ```
-$ slack-utils --version
+$ slacktool --version
 v0.1.0
 
-$ slack-utils --help
-  Usage: slack-utils [options] [command]
+$ slacktool --help
+  Usage: slacktool [options] [command]
 
   Options:
     -V, --version         output the version number
@@ -125,15 +125,15 @@ $ slack-utils --help
     help [command]        display help for command
 
 
-  See <https://github.com/mrtrom/slack-utils> for more complete docs
-  Please report bugs to <https://github.com/mrtrom/slack-utils/issues>
+  See <https://github.com/mrtrom/slacktool> for more complete docs
+  Please report bugs to <https://github.com/mrtrom/slacktool/issues>
 ```
 
 ## Usage
 
 Basic authoization
 ```
-$ slack-utils --token=[YOUR_TOKEN]
+$ slacktool --token=[YOUR_TOKEN]
 ```
 
 ### Channels
@@ -144,19 +144,19 @@ This allows you to interact with Slack channels (conversations). All these subco
 
 Listing all your channels
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --list
+$ slacktool --token=[YOUR_TOKEN] channels --list
 ```
 Listing all your channels, excluding archived
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --list --exclude-archived
+$ slacktool --token=[YOUR_TOKEN] channels --list --exclude-archived
 ```
 Listing all your channels with 1 member
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --list --members 1
+$ slacktool --token=[YOUR_TOKEN] channels --list --members 1
 ```
 Listing all your channels with no members
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --list --empty-only
+$ slacktool --token=[YOUR_TOKEN] channels --list --empty-only
 ```
 
 #### Archiving Channels
@@ -164,15 +164,15 @@ Remember to first test the execution of this command with the `--dry-run` argume
 
 Watching changes before running this command
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --archive --exclude-archived --members 1 --dry-run
+$ slacktool --token=[YOUR_TOKEN] channels --archive --exclude-archived --members 1 --dry-run
 ```
 Archiving all your channels with 1 member
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --archive --exclude-archived --members 1
+$ slacktool --token=[YOUR_TOKEN] channels --archive --exclude-archived --members 1
 ```
 Listing all your channels with no members
 ```
-$ slack-utils --token=[YOUR_TOKEN] channels --archive --exclude-archived --empty-only
+$ slacktool --token=[YOUR_TOKEN] channels --archive --exclude-archived --empty-only
 ```
 
 &nbsp;
