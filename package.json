@@ -7,6 +7,7 @@
   },
   "main": "bin/slacktool",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "npm run build",
     "prepublishOnly": "npm test",
     "build": "tsc",
