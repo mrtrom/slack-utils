@@ -13,7 +13,7 @@ program
   .requiredOption('-a, --token <token>,', 'Slack API token')
   .command('channels')
   .option('-l, --list', 'List of channels to show')
-  .option('-e, --exclude-archived', 'Exclude archived channels')
+  .option('--exclude-archived', 'Exclude archived channels')
   .option(
     '--starts-with <string>',
     'Only show channels that start with the given string'
