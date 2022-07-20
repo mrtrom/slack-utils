@@ -7,7 +7,6 @@
   },
   "main": "bin/slacktool",
   "scripts": {
-    "test": "jest test",
     "prepare": "npm run build",
     "prepublishOnly": "npm test",
     "build": "tsc",
