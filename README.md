@@ -7,6 +7,10 @@ This is a set of tool that helps working with Slack in bulk such as: listing cha
 ```
 $ npm install -g slacktool
 ```
+or
+```
+$ npx slacktool
+```
 
 ## Configuration
 
