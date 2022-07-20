@@ -34,6 +34,7 @@ program
     'Only show channels that contains the given string'
   )
   .option('--empty-only', 'Only show empty channels')
+  .option('--achive', 'Archive selected channels')
   .description('Works with the channels API')
   .action(commandOptions => {
     channels({ ...commandOptions, ...program.opts() });

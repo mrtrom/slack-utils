@@ -12,11 +12,12 @@ type ChannelOptions = {
   emptyOnly?: boolean;
   startsWith?: string;
   contains?: string;
+  archive?: boolean;
 };
 
 const list = async (web: WebClient, options: ChannelOptions): Promise<void> => {
   let channels: Channel[] = [];
-  const { excludeArchived, emptyOnly, startsWith, contains } = options;
+  const { excludeArchived, ...otherOptions } = options;
 
   const recursiveList = async (cursor?: string): Promise<Channel[]> => {
     const { channels: newChannels, response_metadata: responseMetadata } =
@@ -38,22 +39,15 @@ const list = async (web: WebClient, options: ChannelOptions): Promise<void> => {
   };
 
   channels = await recursiveList();
-  await getChannelsInfo(channels, { emptyOnly, startsWith, contains });
+  await getChannelsInfo(channels, otherOptions);
 };
 
 const main = async (params: Channels) => {
-  const {
-    token,
-    list: isList,
-    excludeArchived,
-    emptyOnly,
-    startsWith,
-    contains,
-  } = params;
+  const { token, list: isList, ...otherOptions } = params;
   const web = new WebClient(token);
 
   if (isList) {
-    await list(web, { excludeArchived, emptyOnly, startsWith, contains });
+    await list(web, otherOptions);
   }
 };
 
