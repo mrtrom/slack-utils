@@ -7,10 +7,21 @@ const getVersion = () => {
   return `v${require('../package.json').version}`;
 };
 
+// main program
 program
   .name('slack-utils')
   .version(getVersion())
   .requiredOption('-a, --token <token>,', 'Slack API token')
+  .addHelpText(
+    'after',
+    `
+
+See <https://github.com/mrtrom/slack-utils> for more complete docs
+Please report bugs to <https://github.com/mrtrom/slack-utils/issues>`
+  );
+
+// channels command
+program
   .command('channels')
   .option('-l, --list', 'List of channels to show')
   .option('--exclude-archived', 'Exclude archived channels')
@@ -23,17 +34,10 @@ program
     'Only show channels that contains the given string'
   )
   .option('--empty-only', 'Only show empty channels')
-  .description('List all the TODO tasks')
+  .description('Works with the channels API')
   .action(commandOptions => {
     channels({ ...commandOptions, ...program.opts() });
-  })
-  .addHelpText(
-    'after',
-    `
-
-See <https://github.com/mrtrom/slack-utils> for more complete docs
-Please report bugs to <https://github.com/mrtrom/slack-utils/issues>`
-  );
+  });
 
 program.parse(process.argv);
 
