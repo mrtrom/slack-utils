@@ -15,7 +15,10 @@ type ChannelOptions = {
   archive?: boolean;
 };
 
-const list = async (web: WebClient, options: ChannelOptions): Promise<void> => {
+const getChannels = async (
+  web: WebClient,
+  options: ChannelOptions
+): Promise<Channel[]> => {
   let channels: Channel[] = [];
   const { excludeArchived, ...otherOptions } = options;
 
@@ -39,6 +42,14 @@ const list = async (web: WebClient, options: ChannelOptions): Promise<void> => {
   };
 
   channels = await recursiveList();
+
+  return channels;
+};
+
+const list = async (web: WebClient, options: ChannelOptions): Promise<void> => {
+  const { excludeArchived, ...otherOptions } = options;
+
+  const channels = await getChannels(web, options);
   await getChannelsInfo(channels, otherOptions);
 };
 
